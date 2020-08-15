@@ -12,10 +12,10 @@
   <body>
     <div class="nav_top">
       <button class="button_logo">
-      <img class="logo" src="../static/img/로고.png" alt="">
+      <div class="logo"><a href="{% url 'index' %}"><img src="../static/img/로고.png" alt="" width="136px"></a></div>
       </button>
       <button class="button_my_page">
-          <img class="my_page" src="../static/img/ic_person_24px.png" alt="">
+          <a href="{% url 'mypage' %}"><img class="my_page" src="../static/img/ic_person_24px.png" alt=""></a>
       </button>
   </div>
     {%block content %} {%endblock%}

@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}ㅇㅇ{% endblock title %}
 {% block content %}
-<p>{{user.profile.nickname}} 로그인 중</p>
-<a href="{% url 'logout' %}"> 로그아웃하기</a>
-<a href="{% url 'mypage' %}"> 마이페이지</a>
+{% comment %} <a href="{% url 'logout' %}"> 로그아웃하기</a> {% endcomment %}
+<div class="indexText" id="weather">{{user.profile.nickname}}님, 안녕하세요</br></br>우리동네 날씨</div>
+<div class="indexBox" id="weatherBox"></div>
+<div class="indexText" id="info">동네방네는?</div>
+<div class="indexBox" id="infoBox">
+    <div class="infoText">1인 가구를 위한 동네 정보 커뮤니티</br></br>동네 친구들과 정보를 공유하고 다른 동네도 </br>
+    살펴보세요!</div>
+</div>
+<div class="indexText" id="sale">우리동네 할인 소식</div>
+<div class="indexBox" id="saleBox">
+            <div class="content_box_1">
+                <div class="content_box_left">
+                    <img class="logo" src="../static/img/logo_galbi.png" alt="">
+                </div>
+                <div class="content_box_center">
+                    <div class="content_box_center_title"></br>썬더치킨 3000원 할인</div>
+                    <div class="content_box_center_day"></br>~9월1일</div>
+                </div>
+            </div>
+</div>
+
+
 {% endblock %}
