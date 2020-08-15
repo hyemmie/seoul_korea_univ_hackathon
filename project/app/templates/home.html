@@ -1,0 +1,36 @@
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+    <div class="total_wrapper">
+        <div class="wrapper_h1">
+            <h1>대여/나눔 게시판 </h1>
+        </div>
+        {% for post in posts %}
+        <div class="center_wrapper">
+            <div class="wrapper"> 
+                <div class="content">
+                    <span class="material-icons">done</span>
+                    <a class="title" href="{%url 'detail' post.pk %}">{{post.title}}</a>
+                    <span> {{post.author}} </span>
+                    <span> {{post.deadline}}</span>
+                    <span> {{post.left}} </span>
+                    <a class="edit_button, button" href="{%url 'edit' post.pk %}"><span class="material-icons">
+                        create
+                        </span></a>
+                    <a class="delete_button, button" href="{%url 'delete' post.pk %}"><span class="material-icons">
+                        delete_forever
+                        </span></a>
+                </div>
+                <div class="button_wrapper">
+                    <!-- {% if user.is_authenticated and post.author.pk == user.pk %} -->
+                    
+                    <!-- {% endif %} -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+            
+    
+    </div>
+{% endblock %}

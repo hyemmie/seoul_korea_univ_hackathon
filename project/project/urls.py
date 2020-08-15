@@ -20,7 +20,13 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-
-    path('', views.main, name="main"),
-    path('logout', views.logout, name='logout')
+    path('', views.home, name="home"),
+    path('logout', views.logout, name='logout'),
+    path('edit_comment/<int:post_pk>/<int:comment_pk>',views.edit_comment, name="edit_comment"),
+    path('new/', views.new, name="new"),
+    path('detail_url/<int:post_pk>', views.detail, name="detail"),
+    path('edit_url/<int:post_pk>', views.edit, name="edit"),
+    path('delete/<int:post_pk>', views.delete, name="delete"),
+    path('delete_comment/<int:post_pk>/<int:comment_pk>', views.delete_comment, name="delete_comment"),
+    path('chat/', include('chat.urls')),
 ]
