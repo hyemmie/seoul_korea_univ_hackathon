@@ -1,12 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %} 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %} {% block css %} {% endblock %}
+    <link rel="stylesheet" href="../static/base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    {% block css %} {% endblock %}
     <title>동네방네</title>
   </head>
   <body>
+    <div class="nav_top">
+      <button class="button_logo">
+      <img class="logo" src="../static/img/로고.png" alt="">
+      </button>
+      <button class="button_my_page">
+          <img class="my_page" src="../static/img/ic_person_24px.png" alt="">
+      </button>
+  </div>
     {%block content %} {%endblock%}
+    <div class="nav_bottom">
+      <div class="nav_bottom_icon">
+          <button>
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 16.png" alt="">
+          </button>
+          <button>
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 14.png" alt="">
+          </button>
+          <button>
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 15.png" alt="">
+          </button>
+          <button>
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 5.png" alt="">
+          </button>
+          <button>
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" alt="">
+          </button>
+      </div>
+  </div>
   </body>
 </html>
