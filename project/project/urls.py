@@ -36,17 +36,18 @@ urlpatterns = [
 
     path('registration/check', views.check, name='check'),
     path('registration/signup', views.signup, name='signup'),
-    path('registration/setnickname', views.setnickname, name='setnickname'),
-    path('registration/login', views.login, name='login'),
+    path('registration/setnickname/<int:user_pk>',
+         views.setnickname, name='setnickname'),
+    path('registration/login/', views.login, name='login'),
     path('registration/logout', views.logout, name='logout'),
 
 
     path('mypage', views.mypage, name='mypage'),
-    path('mypage/editmyprofile',
+    path('mypage/editmyprofile/<int:profile_pk>',
          views.editmyprofile, name="editmyprofile"),
-    path('mypage/certificationlocation',
+    path('mypage/certificationlocation/<int:profile_pk>',
          views.certificationlocation, name="certificationlocation"),
-    path('mypage/certificationbuilding',
+    path('mypage/certificationbuilding/<int:profile_pk>',
          views.certificationbuilding, name="certificationbuilding"),
 
 
