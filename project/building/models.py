@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from app.models import Profile
+from django.dispatch import receiver
 
 # Create your models here.
 class Building(models.Model):
@@ -15,8 +16,17 @@ class Building(models.Model):
         return 'loc: %s / score: %s' % (self.location_str, self.score)
 
 
-class Evaluate(models.Model):
+class BuildingScore(models.Model):
     building = models.ForeignKey(Building, on_delete=models.CASCADE)
+    evaluated_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    score = models.FloatField() 
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    building = models.ForeignKey(Building, on_delete=models.CASCADE)
+    content = models.CharField(max_length=30, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Live(models.Model):

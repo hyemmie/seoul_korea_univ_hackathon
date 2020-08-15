@@ -23,5 +23,5 @@ urlpatterns = [
     path('building/', include('building.urls')),
 
     path('', views.main, name="main"),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
 ]
