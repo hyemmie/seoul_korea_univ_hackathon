@@ -8,19 +8,83 @@ from django.http import HttpResponse
 from .models import Profile, Rental, Comment
 from time import gmtime, strftime
 import json
+from .models import Profile
 # Create your views here.
 
 def home(request):
     posts= Rental.objects.all().order_by('deadline')
     return render(request,'home.html',{'posts':posts})
 
-def main(request):
-    return render(request, 'startPage/start.html')
+def start(request):
+    return render(request, 'registration/start.html')
+
+
+def check(request):
+    if request.user.username:
+        return redirect('index')
+    return render(request, 'registration/check.html')
+
+
+@login_required(login_url='registration/check')
+def index(request):
+    return render(request, 'index.html')
+
+
+def signup(request):
+    if request.method == "POST":
+        found_user = User.objects.filter(username=request.POST['username'])
+        if found_user:
+            error = '해당 아이디는 이미 존재합니다.'
+            return render(request, 'registration/signup.html', {'error': error})
+
+        newUser = User.objects.create_user(
+            username=request.POST['username'],
+            password=request.POST['password']
+        )
+        auth.login(request, newUser,
+                   backend='django.contrib.auth.backends.ModelBackend')
+        return redirect('setnickname')
+    return render(request, 'registration/signup.html')
+
+
+@login_required(login_url='registration/signup')
+def setnickname(request):
+    if request.method == 'POST':
+        foundNickname = Profile.objects.filter(
+            nickname=request.POST['nickname'])
+        if len(foundNickname):
+            error = "해당 닉네임은 이미 존재합니다."
+            return render(request, 'registration/setnickname.html', {'error': error})
+        newProfile = Profile(
+            username=request.user,
+            nickname=request.POST['nickname']
+        )
+        newProfile.save()
+        return redirect('index')
+
+    return render(request, 'registration/setnickname.html')
+
+
+def login(request):
+    if request.method == "POST":
+        found_user = auth.authenticate(
+            username=request.POST['username'],
+            password=request.POST['password']
+        )
+        if found_user is None:
+            error = 'id 또는 패스워드가 틀렸습니다'
+            return render(request, 'registration/login.html', {'error': error})
+        auth.login(
+            request,
+            found_user,
+            backend='django.contrib.auth.backends.ModelBackend')
+        return redirect(request.GET.get('next', '/index'))
+    return render(request, 'registration/login.html')
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('main')
+    return redirect('start')
 
 
 def count(y_m_d):
@@ -100,3 +164,28 @@ def edit(request, post_pk):
         )
         return redirect('detail', post_pk)
     return render(request, 'edit.html', {'chosen_post': chosen_post})
+
+@login_required(login_url='registration/check')
+def mypage(request):
+    return render(request, 'myPage/mypage.html')
+
+
+@login_required(login_url='registration/check')
+def editmyprofile(request):
+    return render(request, 'myPage/editmyprofile')
+
+
+@login_required(login_url='registration/check')
+def certificationlocation(request):
+    if(request.method == 'POST'):
+
+        currentProfile = Profile.objects.filter(pk=request.user.pk)
+        currentProfile.update(region=request.POST['region'])
+        messages = "정상적으로 위치를 설정했습니다."
+        return render(request, 'myPage/mypage.html', {'messages': messages})
+    return render(request, 'myPage/certificationlocation.html')
+
+
+@login_required(login_url='registration/check')
+def certificationbuilding(request):
+    return render(request, 'myPage/editmyprofile')

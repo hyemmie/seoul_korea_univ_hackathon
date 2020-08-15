@@ -20,7 +20,8 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', views.home, name="home"),
+
+    path('home', views.home, name="home"),
     path('logout', views.logout, name='logout'),
     path('edit_comment/<int:post_pk>/<int:comment_pk>',views.edit_comment, name="edit_comment"),
     path('new/', views.new, name="new"),
@@ -29,4 +30,24 @@ urlpatterns = [
     path('delete/<int:post_pk>', views.delete, name="delete"),
     path('delete_comment/<int:post_pk>/<int:comment_pk>', views.delete_comment, name="delete_comment"),
     path('chat/', include('chat.urls')),
+
+    path('', views.start, name='start'),
+    path('index', views.index, name="index"),
+
+    path('registration/check', views.check, name='check'),
+    path('registration/signup', views.signup, name='signup'),
+    path('registration/setnickname', views.setnickname, name='setnickname'),
+    path('registration/login', views.login, name='login'),
+    path('registration/logout', views.logout, name='logout'),
+
+
+    path('mypage', views.mypage, name='mypage'),
+    path('mypage/editmyprofile',
+         views.editmyprofile, name="editmyprofile"),
+    path('mypage/certificationlocation',
+         views.certificationlocation, name="certificationlocation"),
+    path('mypage/certificationbuilding',
+         views.certificationbuilding, name="certificationbuilding"),
+
+
 ]
