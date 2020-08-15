@@ -1,0 +1,195 @@
+a {
+  text-decoration: none;
+  color: #fcfcfc;
+}
+
+.back {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  position: absolute;
+  top: 223px;
+  left: 53px;
+  justify-content: center;
+  align-content: center;
+  width: 270px;
+  height: 97px;
+  object-fit: contain;
+}
+
+.yellowButton {
+  justify-content: center;
+  align-content: center;
+  width: 321px;
+  height: 72px;
+  border-radius: 36px;
+  background-color: #fdc23e;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+  display: flex;
+}
+
+#loginButton {
+  position: absolute;
+  top: 476px;
+  left: 27px;
+}
+
+#signupButton {
+  position: absolute;
+  top: 578px;
+  left: 27px;
+}
+
+.loginText {
+  width: 248px;
+  height: 40px;
+  font-family: NotoSansKR;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fcfcfc;
+  justify-content: center;
+
+  align-content: center;
+  position: relative;
+  top: 15px;
+}
+
+.signupText {
+  width: 248px;
+  height: 40px;
+  font-family: NotoSansKR;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fcfcfc;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  top: 15px;
+}
+
+.loginLabel {
+  position: absolute;
+  top: 152px;
+  left: 27px;
+  width: 219px;
+  height: 59px;
+  font-family: NotoSansKR;
+  font-size: 40px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fdc23e;
+}
+
+.idLabel {
+  position: absolute;
+  top: 238px;
+  left: 27px;
+  width: 152px;
+  height: 58px;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+
+.passwordLabel {
+  position: absolute;
+  top: 406px;
+  left: 27px;
+  width: 152px;
+  height: 58px;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+
+.idForm {
+  position: absolute;
+  top: 278px;
+  left: 27px;
+}
+
+.passwordForm {
+  position: absolute;
+  top: 447px;
+  left: 27px;
+}
+
+.loginButton {
+  position: absolute;
+  border: 0px;
+  top: 666px;
+  left: 187px;
+  width: 161px;
+  height: 72px;
+  border-radius: 36px;
+  background-color: #fdc23e;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.loginButtonText {
+  position: relative;
+  width: 231px;
+  height: 40px;
+  top: 0px;
+  left: -40px;
+  font-family: NotoSansKR;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fcfcfc;
+  z-index: 10;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 375px;
+  height: 83px;
+  background-color: #f4f4f4;
+}
+
+.headerLogo {
+  position: fixed;
+  top: 14px;
+  left: 120px;
+  width: 136px;
+  height: 49px;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}

@@ -1,18 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {% load static %} 
-        {% block css %}
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        {% endblock %}
-        <title>동네방네</title>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54608cbba1ab87891b26f99d627cb485&libraries=services"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </head>
-    <body>
-        <a href="/building/map/">지도보기</a>
-        {% block content %} {% endblock %}
-    </body>
-</html>
+{% load static %} 
+  <head>
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54608cbba1ab87891b26f99d627cb485&libraries=services"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    {% comment %} {% block css %} {% endblock %} {% endcomment %}
+    <title>동네방네</title>
+  </head>
+  <body>
+    <div class="nav_top">
+      <button class="button_logo">
+      <div class="logo"><a href="{% url 'index' %}"><img src="../static/img/로고.png" alt="" width="136px"></a></div>
+      </button>
+      <button class="button_my_page">
+          <a href="{% url 'mypage' %}"><img class="my_page" src="../static/img/ic_person_24px.png" alt=""></a>
+      </button>
+  </div>
+
+    <div class="nav_bottom">
+      <div class="nav_bottom_icon">
+          <button>
+            <a href="{% url 'map' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 16.png">
+            </a>
+            </button>
+          <button>
+            <a href="{% url 'info' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 14.png" href="{% url 'info' %}" >
+            </a>
+          </button>
+          <button>
+            <a href="{% url 'share' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 15.png" href="{% url 'share' %}">
+            </a>
+          </button>
+          <button>
+            <a href="{% url 'affiliate' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 5.png" href="{% url 'affiliate' %}">
+            </a>
+          </button>
+          <button>
+            <a href="{% url 'chat_index' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" href="{% url 'chat_index' %}">
+            </a>
+          </button>
+      </div>
+  </div>
+  {%block content %} {%endblock%}
+  </body>
+ </html> 
+{% comment %} <a href="/building/map/">지도보기</a> {% endcomment %}

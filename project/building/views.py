@@ -5,6 +5,8 @@ from django.http import HttpResponse
 import json
 
 # Create your views here.
+
+
 def map(request):
     return render(request, 'building/map.html')
 
@@ -33,16 +35,16 @@ def evaluate(request, id):
 
         # 우선 리뷰를 만들고
         Review.objects.create(
-            user = request.user, building = building, content = content
+            user=request.user, building=building, content=content
         )
 
         # 건물 평점을 업데이트
         # 1. 건물 평점 모델을 생성하고
         BuildingScore.objects.create(
-            building = building, evaluated_by = request.user, score = score
+            building=building, evaluated_by=request.user, score=score
         )
         # 2. 건물 평점 모델 중 해당 건물과 관련된 평점의 갯수를 받아서
-        score_lists = BuildingScore.objects.all().filter(building = building)
+        score_lists = BuildingScore.objects.all().filter(building=building)
         cnt = score_lists.count()
         score_sum = 0
 
@@ -50,10 +52,9 @@ def evaluate(request, id):
         for score in score_lists:
             score_sum += score.score
         score_avg = round((score_sum / cnt), 1)
-        
+
         building.score = score_avg
         building.save()
-
         return redirect('/building/'+str(id))
     return render(request, 'building/evaluate.html', {'building': building}) 
 
@@ -74,13 +75,11 @@ def matching(request):
         Building.objects.create(
             location_str = building_loc, loc_latitude = loc_latitude, loc_longitude = loc_longitude
         )
-    
+
     response = {
         "bid": building_already.id,
     }
     return HttpResponse(json.dumps(response))
-
-
 
     # def like(request):
     # if request.method == "POST":
@@ -96,7 +95,7 @@ def matching(request):
     #         Like.objects.create(
     #             post=Post.objects.get(pk=post_pk),
     #             user=request.user
-    #         )   
+    #         )
     #     post_likes = Like.objects.filter(
     #         post=Post.objects.get(pk=post_pk)
     #     )
