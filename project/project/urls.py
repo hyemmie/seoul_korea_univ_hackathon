@@ -61,5 +61,5 @@ urlpatterns = [
     path('info', views.info, name="info"),
     path('share', views.share, name="share"),
     path('talk', views.talk, name="talk"),
-
+]
 

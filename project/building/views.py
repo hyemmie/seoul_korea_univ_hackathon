@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from building.models import Building, Review, BuildingScore
+from building.models import Building, Review, BuildingScore, Live
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
@@ -13,8 +13,13 @@ def map(request):
 
 def building_info(request, id):
     building = Building.objects.get(id=id)
+    user = request.user
     reviews = Review.objects.filter(building=id)
-    return render(request, 'building/building_info.html', {'building': building, 'reviews': reviews})
+    lived = 'false'
+    live = Live.objects.filter(residence = user.profile, building = building)
+    if live:
+        lived = 'true'
+    return render(request, 'building/building_info.html', {'building': building, 'reviews': reviews, 'live': lived})
 
 
 def evaluate(request, id):
@@ -50,22 +55,25 @@ def evaluate(request, id):
 
         building.score = score_avg
         building.save()
-        return redirect('/building/' + str(id))
-    return render(request, 'building/evaluate.html', {'building': building})
+        return redirect('/building/'+str(id))
+    return render(request, 'building/evaluate.html', {'building': building}) 
 
 
 @csrf_exempt
 def matching(request):
     request_body = json.loads(request.body)
-    print(request.body)
     building_loc = request_body['location']
     loc_latitude = request_body['latitude']
     loc_longitude = request_body['longitude']
     try:
-        building_already = Building.objects.get(location_str=building_loc)
+        building_already = Building.objects.get(location_str = building_loc)
+        if building_already.loc_latitude != loc_latitude or building_already.loc_longitude != loc_longitude:
+            building_already.loc_latitude = loc_longitude
+            building_already.loc_longitude = loc_longitude
+            building_already.save()
     except:
         Building.objects.create(
-            location_str=building_loc, score=0, loc_latitude=loc_latitude, loc_longitude=loc_longitude
+            location_str = building_loc, loc_latitude = loc_latitude, loc_longitude = loc_longitude
         )
 
     response = {
