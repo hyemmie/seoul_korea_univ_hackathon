@@ -1,5 +1,7 @@
-{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
   <head>
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/base.css">
@@ -21,11 +23,11 @@
           <a href="{% url 'mypage' %}"><img class="my_page" src="../static/img/ic_person_24px.png" alt=""></a>
       </button>
   </div>
-
+  {%block content %} {%endblock%} 
     <div class="nav_bottom">
       <div class="nav_bottom_icon">
           <button>
-            <a href="{% url 'building' %}">
+            <a href="{% url 'map' %}">
               <img class="nav_bottom_icon_img" src="../static/img/그룹 16.png">
             </a>
             </button>
@@ -45,12 +47,12 @@
             </a>
           </button>
           <button>
-            <a href="{% url 'talk' %}">
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" href="{% url 'talk' %}">
+            <a href="{% url 'chat_index' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" href="{% url 'chat_index' %}">
             </a>
           </button>
       </div>
   </div>
-  {%block content %} {%endblock%}
   </body>
-{% comment %} <a href="/building/map/">지도보기</a> {% endcomment %}
+
+  </html>

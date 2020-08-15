@@ -237,6 +237,8 @@ def info(request):
 
 def share(request):
     return render(request, 'share.html')
+def share_detail(request):
+    return render(request, 'share_detail.html')
 
 
 

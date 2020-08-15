@@ -1,4 +1,41 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %} 
+
+<div class="chatWrapper">
+
+    <div class="chatText">
+        어떤 채팅방에 들어가시겠어요?
+    </div>
+
+    <div class="chatInput">
+        <input id="room-name-input" type="text"  width="200px"/><br/>
+    </div>
+    </br>
+    </br>
+    </br>
+
+    <div >
+        <input class="chatInputButton" id="room-name-submit" type="button" value="Enter"/>
+    </div>
+</div>
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+ 
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+{% endblock %}
+
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -23,4 +60,4 @@
         };
     </script>
 </body>
-</html>
+</html> {% endcomment %}

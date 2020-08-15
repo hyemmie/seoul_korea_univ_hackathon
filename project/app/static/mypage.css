@@ -71,5 +71,11 @@
         font-stretch: normal;
         font-style: normal;
     }
+    .button {
+        background: none;
+        border: none;
+        width:54px;
+        height:45px;
+        padding:0;
+      }
     
-   
