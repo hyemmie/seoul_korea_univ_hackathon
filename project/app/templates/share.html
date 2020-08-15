@@ -1,6 +1,96 @@
 {% extends 'base.html' %}
-{% block title %}ㅇㅇ{% endblock title %}
+{% block title %}동네방네{% endblock %}
+
 {% block content %}
 
+    <div class="affiliate">
+        <div class="title">대여 및 품앗이</div>
+        <div class="intro">물건을 주고 받고<br /> 도움을 주고 받아요</div>
+        <div class="purpose">
+            <div class="purpose_top">  
+                <div class="purpose_option">빌려주세요</div>
+                <div class="purpose_option">빌려드려요</div>
+            </div>
+            <div class="purpose_bottom"> 
+                <div class="purpose_option">도와주세요</div>
+                <div class="purpose_option">도와드려요</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content_box">
+                <div class="content_box_left">
+                    <img class="logo" src="../static/img/logo_galbi.png" alt="">
+                </div>
+                <div class="content_box_center_share">
+                    <div class="content_box_center_title_share">아이폰 충전기 빌려주실 분</div>
+                    <div class="content_box_center_purpose">빌려주세요</div>
+                </div>
+                <div class="content_box_right">
+                    <button class="button">
+                        <a href="{% url 'affiliate_detail' %}">
+                        <span class="material-icons">
+                            keyboard_arrow_right
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_left">
+                    <img class="logo" src="../static/img/logo_galbi.png" alt="">
+                </div>
+                <div class="content_box_center_share">
+                    <div class="content_box_center_title_share">다리미 하루 빌려드려요</div>
+                    <div class="content_box_center_purpose">빌려드려요</div>
+                </div>
+                <div class="content_box_right">
+                    <button class="button">
+                        <span class="material-icons">
+                            keyboard_arrow_right
+                            </span>
+                    </button>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_left">
+                    <img class="logo" src="../static/img/logo_galbi.png" alt="">
+                </div>
+                <div class="content_box_center_share">
+                    <div class="content_box_center_title_share">택배 좀 대신 받아주세요</div>
+                    <div class="content_box_center_purpose">도와주세요</div>
+                </div>
+                <div class="content_box_right">
+                    <button class="button">
+                        <a href="{% url 'share_detail' %}"></a>
+                        <span class="material-icons">
+                            keyboard_arrow_right
+                            </span>
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="content_box">
+                <div class="content_box_left">
+                    <img class="logo" src="../static/img/logo_galbi.png" alt="">
+                </div>
+                <div class="content_box_center_share">
+                    <div class="content_box_center_title_share">시간당 1만원에 이사 도와드려요</div>
+                    <div class="content_box_center_purpose">도와드려요</div>
+                </div>
+                <div class="content_box_right">
+                    <button class="button">
+                        <span class="material-icons">
+                            keyboard_arrow_right
+                            </span>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <button class="share_write">
+    <div class="write">
+        <a href="{% url 'share_detail' %}">
+        글쓰기
+    </a>
+    </div>
+</button>
 {% endblock %}
-</body>

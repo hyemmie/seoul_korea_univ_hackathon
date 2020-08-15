@@ -73,30 +73,4 @@ def matching(request):
 
 
 
-    # def like(request):
-    # if request.method == "POST":
-    #     request_body = json.loads(request.body)
-    #     post_pk = request_body['post_pk']
-    #     existing_like = Like.objects.filter(
-    #         post=Post.objects.get(pk= post_pk ),
-    #         user=request.user
-    #     )
-    #     if existing_like.count() > 0:
-    #         existing_like.delete()
-    #     else:
-    #         Like.objects.create(
-    #             post=Post.objects.get(pk=post_pk),
-    #             user=request.user
-    #         )   
-    #     post_likes = Like.objects.filter(
-    #         post=Post.objects.get(pk=post_pk)
-    #     )
-    #     check = Like.objects.filter(
-    #         post=Post.objects.get(pk= post_pk ),
-    #         user=request.user
-    #     )
-    #     response = {
-    #         'like_count': post_likes.count(),
-    #         'check' : check.count()
-    #     }
-    #     return HttpResponse(json.dumps(response))
+ 

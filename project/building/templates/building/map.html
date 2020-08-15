@@ -1,13 +1,18 @@
 {% extends 'base_2.html' %}
-{% block content %}
-{% load static %}
+{% block content %}{% load static %}
 
-<input type="text" class="search" placeholder="건물 이름을 입력하세요" />
-<button id="map-search" onclick="changeLoc()">검색</button>
+
+<div class="mapWrapper">
+    <div class="mapTextWrapper">
+        <input type="text" class="search" placeholder="건물 이름을 입력하세요" />
+        <button id="map-search" onclick="changeLoc()">검색</button>
+    </div>
 
 <input type="hidden" class="search-value" value="논현로24길 41" />
-<div id="map" style="width: 50%; height: 500px; margin: 0 auto;"></div>
-
+<div id="map" style="width: 80%; height: 500px; margin: 0 auto;"></div>
+</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="{% static 'building/map.js' %}"></script>
-{% endblock content %}
+{% endblock%}
+  </body>
+ </html> 
