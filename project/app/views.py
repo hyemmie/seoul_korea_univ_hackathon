@@ -11,9 +11,11 @@ import json
 from .models import Profile
 # Create your views here.
 
+
 def home(request):
-    posts= Rental.objects.all().order_by('deadline')
-    return render(request,'home.html',{'posts':posts})
+    posts = Rental.objects.all().order_by('deadline')
+    return render(request, 'home.html', {'posts': posts})
+
 
 def start(request):
     return render(request, 'registration/start.html')
@@ -110,81 +112,88 @@ def logout(request):
 
 def count(y_m_d):
     time = strftime("%Y-%m-%d", gmtime()).split('-')
-    b = int(time[0])*365 + int(time[1])*30 +int(time[2])
+    b = int(time[0])*365 + int(time[1])*30 + int(time[2])
     a = int(y_m_d[0])*365 + int(y_m_d[1])*30 + int(y_m_d[2])
     print(a, "데드라인 날짜로 변환")
     print(b, "지금 날짜")
-    if a>b:
+    if a > b:
         result = f"마감 {a-b}일 임박!!"
     else:
         result = "마감일이 지난 나눔입니다."
     return result
 
 # @login_required(login_url = '/registration/login')
+
+
 def new(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         print(request.user)
-        y_m_d = (request.POST['deadline'].split('-')) 
-        new_post= Rental.objects.create(
+        y_m_d = (request.POST['deadline'].split('-'))
+        new_post = Rental.objects.create(
             title=request.POST['title'],
             content=request.POST['content'],
             region=request.user.profile.region,
-            author = request.user.username,
-            deadline = request.POST['deadline'],
-            left = count(y_m_d),
+            author=request.user.username,
+            deadline=request.POST['deadline'],
+            left=count(y_m_d),
         )
-         
-     
-        return redirect('detail',post_pk=new_post.pk)
+
+        return redirect('detail', post_pk=new_post.pk)
     else:
-        return render(request,'new.html')
+        return render(request, 'new.html')
+
 
 def detail(request, post_pk):
-    chosen_post= Rental.objects.get(pk= post_pk)
-    posts= Rental.objects.all()
-    if request.method=="POST":
+    chosen_post = Rental.objects.get(pk=post_pk)
+    posts = Rental.objects.all()
+    if request.method == "POST":
         Comment.objects.create(
-            post = chosen_post,
-            content = request.POST['content'],
-            author= request.user.username
+            post=chosen_post,
+            content=request.POST['content'],
+            author=request.user.username
         )
         return redirect('detail', post_pk)
-    return render (request, 'detail.html',{'chosen_post':chosen_post, 'posts':posts})
+    return render(request, 'detail.html', {'chosen_post': chosen_post, 'posts': posts})
+
 
 def delete_comment(request, post_pk, comment_pk):
-    comment= Comment.objects.get(pk= comment_pk)
+    comment = Comment.objects.get(pk=comment_pk)
     comment.delete()
     return redirect('detail', post_pk)
 
-def edit_comment(request, post_pk, comment_pk ):
-    comment= Comment.objects.get(pk = comment_pk)
-    if request.method=='POST':
-        Comment.objects.filter(pk= comment_pk).update(
-         content= request.POST['content'],
-         author= request.user.username
+
+def edit_comment(request, post_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method == 'POST':
+        Comment.objects.filter(pk=comment_pk).update(
+            content=request.POST['content'],
+            author=request.user.username
         )
-        return redirect ('detail',post_pk)
+        return redirect('detail', post_pk)
     return render(request, 'edit_comment.html')
 
+
 def delete(request, post_pk):
-    chosen_post= Rental.objects.get(pk= post_pk)
+    chosen_post = Rental.objects.get(pk=post_pk)
     chosen_post.delete()
-    return redirect ('home')
+    return redirect('home')
+
 
 def edit(request, post_pk):
-    chosen_post = Rental.objects.get(pk= post_pk)
+    chosen_post = Rental.objects.get(pk=post_pk)
     if request.method == 'POST':
         y_m_d = (request.POST['deadline'].split('-'))
-        Rental.objects.filter(pk= post_pk).update(
-         title=request.POST['title'],
-         content=request.POST['content'],
-         region=request.user.profile.region,
-         author = request.user.username,
-         deadline = request.POST['deadline'],
-         left = count(y_m_d),
+        Rental.objects.filter(pk=post_pk).update(
+            title=request.POST['title'],
+            content=request.POST['content'],
+            region=request.user.profile.region,
+            author=request.user.username,
+            deadline=request.POST['deadline'],
+            left=count(y_m_d),
         )
         return redirect('detail', post_pk)
     return render(request, 'edit.html', {'chosen_post': chosen_post})
+
 
 @login_required(login_url='registration/check')
 def mypage(request):
@@ -222,4 +231,3 @@ def certificationbuilding(request, profile_pk):
             messages = "해당 건물과 사용자의 주소가 달라 건물인증에 실패하였습니다. (도로명 주소를 사용해 주세요.)"
             return render(request, 'myPage/mypage.html', {'messages': messages})
     return render(request, 'myPage/certificationbuilding.html')
-
