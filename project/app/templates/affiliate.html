@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<head>
+{% comment %} <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/affiliate.css">
@@ -9,7 +9,7 @@
       rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
+<body> {% endcomment %}
     <div class="affiliate">
         <div class="title">제휴 할인 정보</div>
         <div class="intro">우리 동네 지역 상권의<br /> 제휴 및 할인 정보를 받아보세요</div>
@@ -81,4 +81,4 @@
         </div>
     </div>
 {% endblock %}
-</body>
+{% comment %} </body> {% endcomment %}

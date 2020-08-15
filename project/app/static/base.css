@@ -3,6 +3,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .nav_top {
   position: fixed;
   top: 0px;
@@ -196,4 +197,60 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.affiliate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content_box {
+  /* width:100%;
+      height:100px;
+      display: flex;
+      margin: 10px 0;
+      border-bottom: solid 0.1px #BDBDBD; */
+  display: flex;
+  width: 321px;
+  height: 95px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.findButton {
+  position: absolute;
+  top: 123px;
+  left: 27px;
+  width: 321px;
+  height: 55px;
+  border-radius: 36px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fdc23e;
+}
+
+.locImage {
+  position: relative;
+  top: 15px;
+  left: 79px;
+}
+
+.findButtonText {
+  position: relative;
+  top: -7px;
+  left: 133px;
+  width: 87px;
+  height: 32px;
+  font-family: SegoeUI;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 }
