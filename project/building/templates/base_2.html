@@ -1,16 +1,16 @@
-{% load static %} 
   <head>
-  
+  {% load static %} 
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/base.css">
+    <link rel="stylesheet" href="../static/base_2.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54608cbba1ab87891b26f99d627cb485&libraries=services"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    {% comment %} {% block css %} {% endblock %} {% endcomment %}
+    {% block css %} {% endblock %}
     <title>동네방네</title>
   </head>
   <body>
