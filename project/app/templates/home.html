@@ -1,36 +1,114 @@
 {% block content %}
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
 </head>
-    <div class="total_wrapper">
-        <div class="wrapper_h1">
-            <h1>대여/나눔 게시판 </h1>
-        </div>
-        {% for post in posts %}
-        <div class="center_wrapper">
-            <div class="wrapper"> 
-                <div class="content">
-                    <span class="material-icons">done</span>
-                    <a class="title" href="{%url 'detail' post.pk %}">{{post.title}}</a>
-                    <span> {{post.author}} </span>
-                    <span> {{post.deadline}}</span>
-                    <span> {{post.left}} </span>
-                    <a class="edit_button, button" href="{%url 'edit' post.pk %}"><span class="material-icons">
-                        create
-                        </span></a>
-                    <a class="delete_button, button" href="{%url 'delete' post.pk %}"><span class="material-icons">
-                        delete_forever
-                        </span></a>
-                </div>
-                <div class="button_wrapper">
-                    <!-- {% if user.is_authenticated and post.author.pk == user.pk %} -->
-                    
-                    <!-- {% endif %} -->
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-            
-    
+<div class="media-left">
+  <figure class="image is-50x50">
+    <img
+      id="weatherlogo"
+      src="http://openweathermap.org/img/w/{{ weather.icon }}.png"
+      alt="Image"
+      display="none"
+    />
+  </figure>
+</div>
+<span><span id="temp" display="none"></span> </span>
+<span id="myLocationInfo"></span>
+
+<div class="total_wrapper">
+  <div class="wrapper_h1">
+    <h1>대여/나눔 게시판</h1>
+  </div>
+  {% for post in posts %}
+  <div class="center_wrapper">
+    <div class="wrapper">
+      <div class="content">
+        <span class="material-icons">done</span>
+        <a class="title" href="{%url 'detail' post.pk %}">{{post.title}}</a>
+        <span> {{post.author}} </span>
+        <span> {{post.deadline}}</span>
+        <span> {{post.left}} </span>
+        <a class="edit_button, button" href="{%url 'edit' post.pk %}"
+          ><span class="material-icons">
+            create
+          </span></a
+        >
+        <a class="delete_button, button" href="{%url 'delete' post.pk %}"
+          ><span class="material-icons">
+            delete_forever
+          </span></a
+        >
+      </div>
+      <div class="button_wrapper">
+        <!-- {% if user.is_authenticated and post.author.pk == user.pk %} -->
+
+        <!-- {% endif %} -->
+      </div>
     </div>
+  </div>
+  {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  var a = document.getElementById("myLocationInfo");
+
+  function whereami(elt) {
+    var options = {
+      enableHighAccuracy: false,
+      maximumAge: 30000,
+      timeout: 15000,
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      elt.innerHTML = "이 브라우저에서는 Geolocation이 지원되지 않습니다.";
+    }
+
+    const getWeather = async (latitude, longitude) => {
+      const {
+        data: {
+          main: { temp },
+          weather,
+        },
+      } = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=b84e79fece5f6bdbba18a6fc83855bc0&units=metric`
+      );
+      const result = {
+        temp,
+        status: weather[0].main,
+        icon: weather[0].icon,
+      };
+      return result;
+    };
+
+    function error(e) {
+      elt.innerHTML = "Geolocation 오류 " + e.code + ": " + e.message;
+    }
+    // geolocation 요청이 성공하면 이 함수가 호출된다.
+    function success(pos) {
+      var location = [pos.coords.latitude, pos.coords.longitude];
+      const weather = getWeather(location[0], location[1]);
+      alert(location);
+      weather.then((result) => {
+        console.log(result.temp);
+        console.log(result.status);
+        console.log(result.icon);
+        var temp = document.getElementById("temp");
+        var logo_url = `http://openweathermap.org/img/w/${result.icon}.png`;
+        $("#weatherlogo").attr("src", logo_url).show();
+        temp.innerText = result.temp + "도";
+        temp.style.display = "show";
+        status.innerText = result.status;
+      });
+    }
+  }
+  whereami(a);
+</script>
+
 {% endblock %}
