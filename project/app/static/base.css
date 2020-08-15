@@ -13,20 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-button {
-  background: none;
-  border: none;
-}
-.logo {
-  display: flex;
-  justify-content: center;
-}
-.button_my_page {
-  top: 40px;
-  right: 30px;
-  position: fixed;
-  /* margin-left:30px; */
+} left:30px; */
 }
 .my_page {
   width: 20px;
