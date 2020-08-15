@@ -60,6 +60,7 @@ urlpatterns = [
  
     path('info', views.info, name="info"),
     path('share', views.share, name="share"),
+    path('share_detail', views.share_detail, name="share_detail"),
     path('talk', views.talk, name="talk"),
 ]
 
