@@ -18,25 +18,35 @@
           <img class="my_page" src="../static/img/ic_person_24px.png" alt="">
       </button>
   </div>
-    {%block content %} {%endblock%}
+
     <div class="nav_bottom">
       <div class="nav_bottom_icon">
           <button>
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 16.png" alt="">
+            <a href="{% url 'building' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 16.png">
+            </a>
+            </button>
+          <button>
+            <a href="{% url 'info' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 14.png" href="{% url 'info' %}" >
+            </a>
           </button>
           <button>
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 14.png" alt="">
+            <a href="{% url 'share' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 15.png" href="{% url 'share' %}">
+            </a>
           </button>
           <button>
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 15.png" alt="">
+            <a href="{% url 'sale' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 5.png" href="{% url 'sale' %}">
+            </a>
           </button>
           <button>
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 5.png" alt="">
-          </button>
-          <button>
-              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" alt="">
+            <a href="{% url 'talk' %}">
+              <img class="nav_bottom_icon_img" src="../static/img/그룹 12.png" href="{% url 'talk' %}">
+            </a>
           </button>
       </div>
   </div>
+  {%block content %} {%endblock%}
   </body>
-</html>
