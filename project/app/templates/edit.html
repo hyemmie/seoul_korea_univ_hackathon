@@ -1,0 +1,32 @@
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<div class="total_wrapper">
+    <div class="wrapper_h1">
+        <h1>내 글 수정하기</h1>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="center">
+            <div class="title">
+                <p>Title</p>
+                <input class="element_title" name="title" value="{{chosen_post.title}}">
+            </div>
+            <div class="content">
+                <p>Content</p>
+                <input class= "element_content" name="content" value="{{chosen_post.content}}">
+            </div>
+            <div class="duedate">
+                <p>Duedate</p>
+                <input type="date" name="deadline" placeholder="마감기한을 입력하세요" />
+            </div>
+        </div>
+        <div class="center">
+            <button class="button" type="submit"><span class="material-icons">
+                save_alt
+                </span></button>
+        </div>
+    </form>
+</div>
+{% endblock %}

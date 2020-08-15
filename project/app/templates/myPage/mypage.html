@@ -5,6 +5,12 @@
 
 {% endif %}
 
-<a href="{% url 'certificationlocation' %}"> <button>위치 인증하기</button></a>
-<a href="{% url 'certificationbuilding'%}"><button>건물 인증하기</button></a>
-<a href="{% url 'editmyprofile'%}"><button>회원 정보 수정</button></a>
+<a href="{% url 'certificationlocation' user.profile.pk %}">
+  <button>위치 인증하기</button></a
+>
+<a href="{% url 'certificationbuilding' user.profile.pk %}">
+  <button>건물 인증하기</button></a
+>
+<a href="{% url 'editmyprofile' user.profile.pk%}"
+  ><button>회원 정보 수정</button></a
+>

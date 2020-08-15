@@ -1,0 +1,15 @@
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body> 
+    <div>
+    <h1>댓글 수정하기</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="수정할 댓글 내용 입력">
+        <button type="submit">제출하기</button>
+    </form>
+    </div>
+</body>
+{% endblock %}
