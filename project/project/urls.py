@@ -21,6 +21,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 
-    path('', views.main, name="main"),
-    path('logout', views.logout, name='logout')
+    path('', views.start, name='start'),
+    path('index', views.index, name="index"),
+
+    path('registration/check', views.check, name='check'),
+    path('registration/signup', views.signup, name='signup'),
+    path('registration/setnickname', views.setnickname, name='setnickname'),
+    path('registration/login', views.login, name='login'),
+    path('registration/logout', views.logout, name='logout'),
+
+
+    path('mypage', views.mypage, name='mypage'),
+    path('mypage/editmyprofile',
+         views.editmyprofile, name="editmyprofile"),
+    path('mypage/certificationlocation',
+         views.certificationlocation, name="certificationlocation"),
+    path('mypage/certificationbuilding',
+         views.certificationbuilding, name="certificationbuilding"),
+
 ]
