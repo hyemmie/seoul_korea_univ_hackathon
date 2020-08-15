@@ -1,21 +1,13 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-
-    <form>
-        {% csrf_token %}
-        <input type="text" placeholder="건물 이름을 입력하세요">
+    <form method="POST">
+        <input type="text" class="search" placeholder="건물 이름을 입력하세요">
+        <button id="map-search" onclick="changeLoc()">검색</button>
     </form>
 
+    <input type="hidden" class="search-value" value="논현로24길 41">
     <div id="map" style="width: 50%; height: 500px; margin: 0 auto;"></div>
 
-    <script>
-    var mapOptions = {
-        center: new naver.maps.LatLng(37.3595704, 127.105399),
-        zoom: 10
-    };
-
-    var map = new naver.maps.Map('map', mapOptions);
-    </script>
-
+    <script src="{% static 'building/map.js' %}"></script>  
 {% endblock content %}

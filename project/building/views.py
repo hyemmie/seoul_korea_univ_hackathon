@@ -3,7 +3,6 @@ from building.models import Building, Review, BuildingScore
 
 # Create your views here.
 def map(request):
-    print('map 왔음')
     return render(request, 'building/map.html')
 
 
@@ -19,6 +18,7 @@ def evaluate(request, id):
         content = request.POST['review-content']
         score = request.POST['review-score']
 
+        # 0~5를 벗어난 범위의 점수를 입력하면 에러 발생
         if (int(score) > 5) or (int(score) < 0):
             error = '0~5 사이의 점수를 입력해주세요!'
             return render(request, 'building/evaluate.html', {'building': building, 'error': error})

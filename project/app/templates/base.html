@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %} {% block css %} {% endblock %}
-    <title>동네방네</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9pb37phq20"></script>
-  </head>
-  <body>
-    <a href="/building/map/">지도보기</a>
-    {% block content %} {% endblock %}
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %} {% block css %} {% endblock %}
+        <title>동네방네</title>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54608cbba1ab87891b26f99d627cb485&libraries=services"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <a href="/building/map/">지도보기</a>
+        {% block content %} {% endblock %}
+    </body>
 </html>
