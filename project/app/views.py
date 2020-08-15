@@ -121,7 +121,7 @@ def certificationlocation(request, profile_pk):
         messages = "정상적으로 위치를 설정했습니다."
         return render(request, 'myPage/mypage.html', {'messages': messages})
     else:
-        messages = "위치를 재설정 해주세요."
+        messages = "위치를 도로명 주소로 설정해주세요."
         return render(request, 'myPage/certificationlocation.html', {'messages': messages})
     return render(request, 'myPage/certificationlocation.html')
 
