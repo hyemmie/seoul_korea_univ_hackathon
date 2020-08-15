@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from building.models import Building, Review, BuildingScore
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 
 # Create your views here.
 def map(request):
@@ -47,3 +50,53 @@ def evaluate(request, id):
         building.save()
         return redirect('/building/' + str(id))
     return render(request, 'building/evaluate.html', {'building': building}) 
+
+
+@csrf_exempt
+def matching(request):
+    request_body = json.loads(request.body)
+    print(request.body)
+    building_loc = request_body['location']
+    loc_latitude = request_body['latitude']
+    loc_longitude = request_body['longitude']
+    try:
+        building_already = Building.objects.get(location_str = building_loc)
+    except:
+        Building.objects.create(
+            location_str = building_loc, score = 0, loc_latitude = loc_latitude, loc_longitude = loc_longitude
+        )
+    
+    response = {
+        "bid": building_already.id,
+    }
+    return HttpResponse(json.dumps(response))
+
+
+
+    # def like(request):
+    # if request.method == "POST":
+    #     request_body = json.loads(request.body)
+    #     post_pk = request_body['post_pk']
+    #     existing_like = Like.objects.filter(
+    #         post=Post.objects.get(pk= post_pk ),
+    #         user=request.user
+    #     )
+    #     if existing_like.count() > 0:
+    #         existing_like.delete()
+    #     else:
+    #         Like.objects.create(
+    #             post=Post.objects.get(pk=post_pk),
+    #             user=request.user
+    #         )   
+    #     post_likes = Like.objects.filter(
+    #         post=Post.objects.get(pk=post_pk)
+    #     )
+    #     check = Like.objects.filter(
+    #         post=Post.objects.get(pk= post_pk ),
+    #         user=request.user
+    #     )
+    #     response = {
+    #         'like_count': post_likes.count(),
+    #         'check' : check.count()
+    #     }
+    #     return HttpResponse(json.dumps(response))

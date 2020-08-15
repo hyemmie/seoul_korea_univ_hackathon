@@ -3,7 +3,7 @@
 {% block content %}
     <div class="info-wrapper">
         <div class="building-info">
-            건물이름 : {{ building.name }} | 평점: {{ building.score }} / 5.0 ({{ building.buildingscore_set.count }}명 참여)
+            주소 : {{ building.location_str }} | 평점: {{ building.score }} / 5.0 ({{ building.buildingscore_set.count }}명 참여)
         </div>
         <div class="building-evaluates">
             {% for review in reviews %}

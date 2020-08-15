@@ -18,34 +18,53 @@ function drawMap() {
       level: 3, // 지도의 확대 레벨
     };
 
-  // 지도를 생성합니다
+    // 지도를 생성합니다
     const map = new kakao.maps.Map(mapContainer, mapOption);
 
     const loc = document.querySelector(".search-value").value;
 
     const geocoder = new kakao.maps.services.Geocoder();
 
-  // 주소로 좌표를 검색합니다
+    // 주소로 좌표를 검색합니다
     geocoder.addressSearch(loc, function (result, status) {
-    // 정상적으로 검색이 완료됐으면
-    if (status === kakao.maps.services.Status.OK) {
-        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-      // 결과값으로 받은 위치를 마커로 표시합니다
-        const marker = new kakao.maps.Marker({
-        map: map,
-        position: coords,
-        });
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            const marker = new kakao.maps.Marker({
+            map: map,
+            position: coords,
+            });
+            
+            // 여기서 axios로 해당 건물에 대한 model이 만들어있는지 확인하고, 없으면 만듦
+            axios.post('/building/matching/', { 
+                location: result[0].address_name,
+                latitude: result[0].y,
+                longitude: result[0].x })
+            .then((response) => {
+                console.log('요기');
+                console.log(response);
+                const infowindow = new kakao.maps.InfoWindow({
+                    content:
+                        `<div style="width:150px;text-align:center;padding:6px 0;"><a href="/building/${ response.data.bid }/">건물 정보 보기</a></div>`,
+                        // 위에서 axios를 통해 만든(받아온) 건물 모델의 id를 이용해 해당 건물 정보 페이지로 보내줌.
+                    });
+                    infowindow.open(map, marker);
+            })
+            .catch((error) => console.error(error));
 
-      // 인포윈도우로 장소에 대한 설명을 표시합니다
-        const infowindow = new kakao.maps.InfoWindow({
-        content:
-            '<div style="width:150px;text-align:center;padding:6px 0;"></div>',
-        });
-        infowindow.open(map, marker);
 
-      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
+            // // 인포윈도우로 장소에 대한 설명을 표시합니다
+            // const infowindow = new kakao.maps.InfoWindow({
+            // content:
+            //     '<div style="width:150px;text-align:center;padding:6px 0;"><a href=""></a></div>',
+            //     // 위에서 axios를 통해 만든(받아온) 건물 모델의 id를 이용해 해당 건물 정보 페이지로 보내줌.
+            // });
+            // infowindow.open(map, marker);
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
     }
     // 오류 처리 해줘야 함!
     });

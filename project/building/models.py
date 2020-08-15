@@ -6,14 +6,13 @@ from django.dispatch import receiver
 # Create your models here.
 class Building(models.Model):
     residents = models.ManyToManyField(Profile, blank=True, related_name="residences", through='Live')
-    name = models.CharField(max_length=15)
     location_str = models.CharField(max_length=50)
     loc_latitude = models.FloatField()
     loc_longitude = models.FloatField()
-    score = models.FloatField()
+    score = models.FloatField(default=0)
 
     def __str__(self):
-        return 'loc: %s / score: %s' % (self.location_str, self.score)
+        return 'id: %d / loc: %s / score: %s' % (self.id, self.location_str, self.score)
 
 
 class BuildingScore(models.Model):
