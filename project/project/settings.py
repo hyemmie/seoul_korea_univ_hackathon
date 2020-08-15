@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'channels',
     'chat',
     'app',
-    
+    'building',
+
     # allauth
     "django.contrib.sites",
     "allauth",

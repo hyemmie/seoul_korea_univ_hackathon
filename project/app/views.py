@@ -51,7 +51,7 @@ def signup(request):
             password=request.POST['password']
         )
         auth.login(request, newUser,
-                   backend='django.contrib.auth.backends.ModelBackend')
+            backend='django.contrib.auth.backends.ModelBackend')
         return redirect('setnickname', newUser.pk)
     return render(request, 'registration/signup.html')
 

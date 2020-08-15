@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <head>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
-    {% load static %} {% block css %} {% endblock %}
-    <title>동네방네</title>
-  </head>
-  <body>
-    {%block content %} {%endblock%}
-  </body>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %} 
+        {% block css %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        {% endblock %}
+        <title>동네방네</title>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54608cbba1ab87891b26f99d627cb485&libraries=services"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <a href="/building/map/">지도보기</a>
+        {% block content %} {% endblock %}
+    </body>
 </html>
