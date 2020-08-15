@@ -1,13 +1,9 @@
-body {
-  font-family: "Noto Sans KR", sans-serif;
-  width: 100%;
-  margin: 0;
-}
 .affiliate {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top:100px;
 }
 .title {
   /* width:100%;
@@ -27,6 +23,11 @@ body {
   text-align: left;
   color: #000000;
   padding-left: 25px;
+}
+a{
+    text-decoration:none;
+    a:link:none;
+    a:visited:none;
 }
 .intro {
   width: 321px;

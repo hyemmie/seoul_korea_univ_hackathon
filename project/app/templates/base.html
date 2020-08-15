@@ -1,4 +1,5 @@
-{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +19,7 @@
           <a href="{% url 'mypage' %}"><img class="my_page" src="../static/img/ic_person_24px.png" alt=""></a>
       </button>
   </div>
-
+  {%block content %} {%endblock%} 
     <div class="nav_bottom">
       <div class="nav_bottom_icon">
           <button>
@@ -48,5 +49,6 @@
           </button>
       </div>
   </div>
-  {%block content %} {%endblock%}
   </body>
+
+  </html>
