@@ -50,6 +50,4 @@ urlpatterns = [
          views.certificationlocation, name="certificationlocation"),
     path('mypage/certificationbuilding/<int:profile_pk>',
          views.certificationbuilding, name="certificationbuilding"),
-
-
 ]

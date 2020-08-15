@@ -9,6 +9,7 @@ from .models import Profile, Rental, Comment
 from time import gmtime, strftime
 import json
 from .models import Profile
+from building.models import Building, Live
 # Create your views here.
 
 
@@ -222,10 +223,17 @@ def certificationlocation(request, profile_pk):
 def certificationbuilding(request, profile_pk):
     if(request.method == 'POST'):
         currentProfile = Profile.objects.filter(pk=profile_pk)
-        if currentProfile[0].region == request.POST['building'] and len(request.POST['building']) > 0:
-            currentProfile.update(building=request.POST['building'],
-                                  isAuth=True)
+        building_loc = request.POST['building']
+
+        if currentProfile[0].region == building_loc and len(building_loc) > 0:
+            currentProfile.update(building=building_loc, isAuth=True)
             messages = "정상적으로 건물을 인증했습니다."
+            try:
+                building_already = Building.objects.get(location_str = building_loc)
+                Live.objects.create(residence = currentProfile[0], building = building_already)
+            except:
+                building_new = Building.objects.create(location_str = building_loc)
+                Live.objects.create(residence = currentProfile[0], building = building_new)
             return render(request, 'myPage/mypage.html', {'messages': messages})
         else:
             messages = "해당 건물과 사용자의 주소가 달라 건물인증에 실패하였습니다. (도로명 주소를 사용해 주세요.)"

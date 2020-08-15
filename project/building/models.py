@@ -7,8 +7,8 @@ from django.dispatch import receiver
 class Building(models.Model):
     residents = models.ManyToManyField(Profile, blank=True, related_name="residences", through='Live')
     location_str = models.CharField(max_length=50)
-    loc_latitude = models.FloatField()
-    loc_longitude = models.FloatField()
+    loc_latitude = models.FloatField(default=1)
+    loc_longitude = models.FloatField(default=1)
     score = models.FloatField(default=0)
 
     def __str__(self):
