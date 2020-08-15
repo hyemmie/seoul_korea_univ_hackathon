@@ -307,6 +307,8 @@ button {
 }
 
 .info-wrapper {
+  position: relative;
+  top: 30px;
   margin: 120px 20px;
   font-family: SegoeUI;
   font-size: 20px;
@@ -318,5 +320,30 @@ button {
 
 a {
   text-decoration: none;
+  color: #aaa;
+}
 
+.evaluateButton {
+  position: relative;
+  top: 50px;
+  /* left: 27px; */
+  width: 321px;
+  height: 55px;
+  border-radius: 36px;
+  border: 0px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fdc23e;
+}
+
+.evaluateButtonText {
+  width: 120px;
+  position: relative;
+  top: 15px;
+  left: 100px;
+}
+
+.formWrapper {
+  position: absolute;
+  top: 250px;
+  margin-left: 23px;
 }

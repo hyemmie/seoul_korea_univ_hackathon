@@ -1,18 +1,21 @@
 {% extends 'base_2.html' %} {% block content %}
 <div class="info-wrapper">
   <div class="building-info">
-    주소 : {{ building.location_str }} | 평점: {{ building.score }} / 5.0
+    주소 : {{ building.location_str }} </br></br> 평점: {{ building.score }} / 5.0
     ({{building.buildingscore_set.count }}명 참여)
   </div>
-  <div class="building-evaluates">
+  <div class="building-evaluates" style=" padding:40px;border-top:2px;height:200px;"> 
     {% for review in reviews %}
     <div class="building-review">
       {{ review.user.get_username }} : {{ review.content }}
     </div>
     {% endfor %}
   </div>
-  <div class="link-evaluate">
-    <a href="/building/{{ building.id }}/evaluate/">평가하러 가기</a>
+  {% comment %} <div class="link-evaluate"> {% endcomment %}
+<div class="evaluateButton">
+  <div class="evaluateButtonText">
+      <a href="/building/{{ building.id }}/evaluate/">평가하러 가기</a>
+    </div>
   </div>
 </div>
 {% endblock content %}

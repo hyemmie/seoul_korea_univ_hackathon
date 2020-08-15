@@ -1,18 +1,28 @@
 {% extends 'base_2.html' %}
+{% load static %} 
 
 {% block content %}
+{% load static %} 
+
 {% if error %}
 <script type="text/javascript">
     alert("{{error}}");
 </script>
 {% endif %}
+
+<div class="formWrapper">
 <form action="/building/{{ building.id }}/evaluate/" method="POST">
     {% csrf_token %}
     <label for="review-score"> 건물 평가 점수 </label>
     <input id="review-score" type="number" name="review-score"> / 5 <br>
+    </br>
 
     <label for="review-content"> 건물에 대한 평가를 해주세요 </label>
+    </br>
     <input id="review-content" type="text" name="review-content"> <br>
-    <input type="submit" value="작성">
+    <input type="submit" value="작성" class="evaluateButton">
 </form>
+
+</div>
+
 {% endblock content %}

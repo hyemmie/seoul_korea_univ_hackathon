@@ -1,12 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'base_2.html' %}
 {% block content %}
 {% load static %} 
 
-
-    <textarea id="chat-log" cols="100" rows="20" width="300px;"></textarea>
     <br/>
-    <input id="chat-message-input" type="text" size="100"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
+    <br/>
+
+    <textarea id="chat-log" cols="45" rows="20" width="300px;"></textarea>
+    <br/>
+    <br/>
+
+    <input id="chat-message-input" type="text"/><br/>
+    <input class="evaluateButton" id="chat-message-submit" type="button" value="Send" style="margin-left:23px;"/>
 
 <script>
     var roomName = {{ room_name_json }};
