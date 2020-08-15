@@ -1,14 +1,21 @@
-{% block content %} {% if error %}
+{% extends "../base_1.html" %} {% block content %}
+{% load static %}
+ {% if error %}
 <script type="text/javascript">
   alert("{{error}}");
 </script>
 {% endif %}
-<h1>회원가입</h1>
-<form method="POST">
+<div class="header"><div class="headerLogo"><img src="{% static 'images/logo.png' %}" width="100%"/></div></div>
+
+<div class="loginLabel">회원가입</div>
+
+  <form method="POST">
   {% csrf_token %}
-  <input type="text" name="username" placeholder="id" />
-  <input type="password" name="password" placeholder="password" />
-  <button type="submit">닉네임 설정하기</button>
+  <div class="idLabel">아이디</div>
+  <div class="idForm"><input type="text" name="username" placeholder="id" /></div>
+  <div class="passwordLabel">비밀번호</div>
+  <div class="passwordForm"><input type="password" name="password" placeholder="password" /></div>
+  <button type="submit" class="loginButton"><div class="loginButtonText">다음</div></button>
 </form>
 
 {% endblock content %}

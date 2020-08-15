@@ -53,4 +53,13 @@ urlpatterns = [
     path('mypage/certificationbuilding/<int:profile_pk>',
          views.certificationbuilding, name="certificationbuilding"),
 
-]
+
+    path('affiliate', views.affiliate, name="affiliate"),
+    path('affiliate_detail', views.affiliate_detail, name="affiliate_detail"),
+
+ 
+    path('info', views.info, name="info"),
+    path('share', views.share, name="share"),
+    path('talk', views.talk, name="talk"),
+
+

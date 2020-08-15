@@ -219,6 +219,30 @@ def certificationlocation(request, profile_pk):
 
 
 @login_required(login_url='registration/check')
+def certificationbuilding(request):
+    return render(request, 'myPage/editmyprofile')
+
+
+def affiliate(request):
+    return render(request, 'affiliate.html')
+
+def affiliate_detail(request):
+    return render(request, 'affiliate_detail.html')
+
+def building(request):
+    return render(request, 'building.html')
+
+def info(request):
+    return render(request, 'info.html')
+
+def share(request):
+    return render(request, 'share.html')
+
+
+
+def talk(request):
+    return render(request, 'talk.html')
+
 def certificationbuilding(request, profile_pk):
     if(request.method == 'POST'):
         currentProfile = Profile.objects.filter(pk=profile_pk)
