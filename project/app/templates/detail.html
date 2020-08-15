@@ -1,0 +1,57 @@
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<div class="total_wrapper">
+   
+    <div class="center">
+        <div class="title">
+            <p>Title</p>
+            <div class="element">
+                {{chosen_post.title}}
+            </div>
+        </div>
+        <div class="content">
+            <p>Content</p>
+            <div class="element">
+                {{chosen_post.content}} 
+            </div>
+        </div>
+        <div class="content">
+            <p>Location</p>
+            <div class="element">
+                {{chosen_post.region}} 
+            </div>
+        </div
+        <div class="duedate">
+            <p>Duedate</p>
+            <div class="element">
+                {{chosen_post.deadline}}  
+            </div>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="comment_wrapper">
+                <input type="text" name="content" placeholder="댓글을 입력하세요">
+                <button type="submit"><span class="material-icons">
+                    rate_review
+                    </span></button>
+            </div>
+        </form>
+        <div class="comment_content">
+            {% for comment in chosen_post.comments.all %}
+            <div class="content-line">    
+                <li>{{comment.content}}</li>
+                <a class="edit_button, button" href="{% url 'edit_comment' chosen_post.pk comment.pk %}"><span class="material-icons">
+                        create</span>
+                </a>
+                    <a href="{% url 'delete_comment' chosen_post.pk comment.pk %}"><span class="material-icons">
+                        clear
+                        </span></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div> 
+
+</div>
+{% endblock %}
