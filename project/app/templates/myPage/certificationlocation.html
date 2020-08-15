@@ -1,4 +1,9 @@
-{% extends "../base.html" %} {% block content %}
+{% extends "../base.html" %} {% block content %} {% if messages %}
+<script type="text/javascript">
+  alert("{{messages}}");
+</script>
+
+{% endif %}
 <form method="POST">
   {% csrf_token %}
   <input
