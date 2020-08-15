@@ -24,12 +24,14 @@ urlpatterns = [
 
     path('home', views.home, name="home"),
     path('logout', views.logout, name='logout'),
-    path('edit_comment/<int:post_pk>/<int:comment_pk>',views.edit_comment, name="edit_comment"),
+    path('edit_comment/<int:post_pk>/<int:comment_pk>',
+         views.edit_comment, name="edit_comment"),
     path('new/', views.new, name="new"),
     path('detail_url/<int:post_pk>', views.detail, name="detail"),
     path('edit_url/<int:post_pk>', views.edit, name="edit"),
     path('delete/<int:post_pk>', views.delete, name="delete"),
-    path('delete_comment/<int:post_pk>/<int:comment_pk>', views.delete_comment, name="delete_comment"),
+    path('delete_comment/<int:post_pk>/<int:comment_pk>',
+         views.delete_comment, name="delete_comment"),
     path('chat/', include('chat.urls')),
 
     path('', views.start, name='start'),
@@ -51,13 +53,13 @@ urlpatterns = [
     path('mypage/certificationbuilding/<int:profile_pk>',
          views.certificationbuilding, name="certificationbuilding"),
 
+
     path('affiliate', views.affiliate, name="affiliate"),
     path('affiliate_detail', views.affiliate_detail, name="affiliate_detail"),
 
-    path('building', views.building, name="building"),
+ 
     path('info', views.info, name="info"),
     path('share', views.share, name="share"),
     path('talk', views.talk, name="talk"),
 
 
-]
