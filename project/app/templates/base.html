@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %} {% block css %} {% endblock %}
     <title>동네방네</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9pb37phq20"></script>
   </head>
   <body>
-    {%block content %} {%endblock%}
+    <a href="/building/map/">지도보기</a>
+    {% block content %} {% endblock %}
   </body>
 </html>
