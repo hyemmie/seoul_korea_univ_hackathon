@@ -1,10 +1,13 @@
+*{
+  margin:0;
+}
 body {
   margin: 0;
   width: 100%;
   height: 100vh;
   /* display: block; */
   /* flex-direction: column; */
-  /* box-sizing: border-box; */
+
 }
 
 .nav_top {
@@ -256,6 +259,8 @@ button {
 .button {
   background: none;
   border: none;
+  width:64px;
+  height:45px;
 }
 .material-icons {
   /* background: none;

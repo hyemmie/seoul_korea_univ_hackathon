@@ -257,3 +257,12 @@ def certificationbuilding(request, profile_pk):
             messages = "해당 건물과 사용자의 주소가 달라 건물인증에 실패하였습니다. (도로명 주소를 사용해 주세요.)"
             return render(request, 'myPage/mypage.html', {'messages': messages})
     return render(request, 'myPage/certificationbuilding.html')
+
+def editmyprofile(request,  profile_pk):
+    profile = Profile.objects.get(pk=profile_pk)
+    if request.method == 'POST':
+        Profile.objects.filter(pk=profile_pk).update(
+            nickname=request.POST['nickname']
+        )
+        return redirect('mypage')
+    return render(request, 'mypage/editmyprofile.html')
