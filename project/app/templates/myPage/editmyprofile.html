@@ -1,15 +1,20 @@
+{%extends 'base_2.html'%}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body> 
-    <div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+    <div style="margin-left:30px;">
     <h1>회원정보 수정하기</h1>
     <form method="POST">
         {% csrf_token %}
         <input type="text" name="nickname" placeholder="수정할 nickname 입력">
-        <button type="submit">제출하기</button>
+        <button type="submit" class="evaluateButton">제출하기</button>
     </form>
     </div>
-</body>
 {% endblock %}

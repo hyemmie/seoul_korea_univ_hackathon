@@ -4,6 +4,8 @@
 {% comment %} <a href="{% url 'logout' %}"> 로그아웃하기</a> {% endcomment %}
 <div class="indexText" id="weather">{{user.profile.nickname}}님, 안녕하세요</br></br>우리동네 날씨</div>
 <div class="indexBox" id="weatherBox">
+<div class="weatherInfo" style="display:flex; flex-direction:row;"> 
+
     <div class="media-left">
     <figure class="image is-50x50">
         <img
@@ -14,8 +16,15 @@
         />
   </figure>
 </div>
-<span><span id="temp" display="none" style="left:20px;"></span> </span> {{request.user.profile.region}}
-<span id="myLocationInfo"></span>
+<div style="display:flex; flex-direction:column;">
+<div id="temp" display="none" style="margin-left:20px; margin-top:30px;"></div>
+</br>
+<div>{{request.user.profile.region}}</div>
+</div>
+<div id="myLocationInfo"></div>
+</br>
+</div>
+
 
 </div>
 <div class="indexText" id="info">동네방네는?</div>
@@ -79,7 +88,7 @@
     function success(pos) {
       var location = [pos.coords.latitude, pos.coords.longitude];
       const weather = getWeather(location[0], location[1]);
-      alert(location);
+      alert("날씨 정보가 업데이트 되었어요!");
       weather.then((result) => {
         console.log(result.temp);
         console.log(result.status);

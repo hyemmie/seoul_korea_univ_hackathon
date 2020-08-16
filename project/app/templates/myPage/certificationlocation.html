@@ -1,4 +1,4 @@
-{% extends "../base.html" %} {% block content %} {% if messages %}
+{% extends "base_2.html" %} {% block content %} {% if messages %}
 <script type="text/javascript">
   alert("{{messages}}");
 </script>
@@ -6,6 +6,15 @@
 {% endif %}
 <form method="POST">
   {% csrf_token %}
+  </br>
+    </br>
+  </br>
+    </br>
+    </br>
+    </br>
+
+  </br>
+
   <input
     type="text"
     id="sample5_address"
@@ -20,6 +29,12 @@
     id="map"
     style="width: 300px; height: 300px; margin-top: 10px; display: none;"
   ></div>
+    <br />
+
+  <br />
+
+  <br />
+
   <button type="submit">이 주소로 사용하기</button>
 </form>
 
